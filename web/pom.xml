@@ -25,6 +25,13 @@
 
 	<name>jmsapp - web</name>
 
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+
 	<url>http://jboss.org/jbossas</url>
 	<licenses>
 		<license>
@@ -34,7 +41,27 @@
 		</license>
 	</licenses>
 
+
+	<repositories>
+		<repository>
+			<id>public-jboss</id>
+			<name>jboss repo</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+	</repositories>
+
+
 	<dependencies>
+
+
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			JBoss WildFly -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- Dependency on the EJB module so we can use it's services if needed -->
 		<dependency>
@@ -78,6 +105,17 @@
 			<artifactId>cdi-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-jms-client-bom -->
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-jms-client-bom</artifactId>
+			<version>17.0.1.Final</version>
+			<type>pom</type>
+		</dependency>
+
 
 		<!-- Import the JSF API, we use provided scope as the API is included in 
 			JBoss AS 7 -->
